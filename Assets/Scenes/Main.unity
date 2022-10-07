@@ -1010,6 +1010,10 @@ MonoBehaviour:
   center: {fileID: 2025832974}
   smoothedVelocity: {x: 0, y: 0}
   currentLookingPos: {x: 0, y: 0}
+  maxDistance: 40
+  minDistance: 8
+  currentDistance: 40
+  proximitySpeed: 0.8
 --- !u!1 &291474593
 GameObject:
   m_ObjectHideFlags: 0

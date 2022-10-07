@@ -9,6 +9,11 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private GameObject center;
     [SerializeField] private Vector2 smoothedVelocity;
     [SerializeField] private Vector2 currentLookingPos;
+    [SerializeField] private float maxDistance = 40;
+    [SerializeField] private float minDistance = 5;
+    [SerializeField] private float currentDistance = 40;
+    [SerializeField] private float proximitySpeed = 0.1f;
+
 
     void Start()
     {
@@ -16,7 +21,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
 
-    void Update()
+    void FixedUpdate()
     {
         Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         inputValues = Vector2.Scale(inputValues, new Vector2(mouseSensitivity, mouseSensitivity));
@@ -29,6 +34,24 @@ public class PlayerCamera : MonoBehaviour
 
         playerBody.transform.localRotation = Quaternion.AngleAxis(currentLookingPos.x, playerBody.transform.up);
 
-        Vector3 newRotation = new Vector3(this.transform.localRotation.x * 40, 0, 0);
+        RaycastHit hit;
+
+        Debug.DrawRay(center.transform.position, transform.TransformDirection(Vector3.back) * currentDistance, Color.green);
+        if (Physics.Raycast(center.transform.position, transform.TransformDirection(Vector3.back), out hit, currentDistance))
+        {
+            Debug.DrawRay(center.transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
+            if(currentDistance > minDistance) currentDistance -= proximitySpeed;
+        }
+        else
+        {
+            if (currentDistance < maxDistance)
+            {
+                if (!Physics.Raycast(center.transform.position, transform.TransformDirection(Vector3.back), out hit, currentDistance + proximitySpeed))
+                {
+                    currentDistance += proximitySpeed;
+                }
+            }
+        }
+        this.transform.localPosition = new Vector3(0, 0, -currentDistance);
     }
 }
