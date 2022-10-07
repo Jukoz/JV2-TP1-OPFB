@@ -24,6 +24,6 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = Vector3.Normalize(new Vector3(hAxis, 0, vAxis));
-        rb.position += direction * speed * Time.fixedDeltaTime;
+        rb.position += rb.transform.TransformDirection(direction) * speed * Time.fixedDeltaTime;
     }
 }
