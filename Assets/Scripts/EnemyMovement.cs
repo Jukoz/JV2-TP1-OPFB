@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private GameObject goal;
+    private GameObject goal;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
     void OnEnable()
     {
+        goal = GameObject.Find("SpaceMarine");
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.enabled = false;
     }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -110,7 +110,7 @@ NavMeshSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 0.4
+    agentClimb: 1
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
@@ -123,7 +123,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a1ef2b2df66bfe03b8adc22b53217625, type: 2}
 --- !u!1 &9810681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1025,11 @@ GameObject:
   - component: {fileID: 291474596}
   - component: {fileID: 291474595}
   - component: {fileID: 291474594}
+  - component: {fileID: 291474600}
+  - component: {fileID: 291474599}
+  - component: {fileID: 291474598}
+  - component: {fileID: 291474597}
+  - component: {fileID: 291474601}
   m_Layer: 0
   m_Name: BobbleEnemy
   m_TagString: Untagged
@@ -1075,7 +1080,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291474593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.654, y: 1.45, z: 24.82}
+  m_LocalPosition: {x: 29, y: 4.1, z: 24.82}
   m_LocalScale: {x: 1.2205323, y: 1.2205323, z: 1.2205323}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1084,6 +1089,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &291474597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291474593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5940c65464907d7992d7c6c506df0ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goal: {fileID: 1032903422}
+--- !u!136 &291474598
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291474593}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!64 &291474599
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291474593}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!195 &291474600
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291474593}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 3.3
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 7
+  m_BaseOffset: 2
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!54 &291474601
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291474593}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &349556872
 GameObject:
   m_ObjectHideFlags: 0
@@ -5820,10 +5904,10 @@ GameObject:
   - component: {fileID: 7566118107961147597}
   m_Layer: 0
   m_Name: Inner Octagon
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1788971244331168306
 Transform:
@@ -5959,10 +6043,10 @@ GameObject:
   - component: {fileID: 7570686734424796533}
   m_Layer: 0
   m_Name: Floor Piece.003
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &2406489333195514724
 MeshFilter:
@@ -6030,7 +6114,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &2604763528678670184
 GameObject:
@@ -6291,10 +6375,10 @@ GameObject:
   - component: {fileID: 6110362069578300569}
   m_Layer: 0
   m_Name: Outer Octagon
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &3776614887126939380
 GameObject:
@@ -6346,7 +6430,7 @@ GameObject:
   - component: {fileID: 8630301114085222562}
   m_Layer: 0
   m_Name: Door Opener
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7014,7 +7098,7 @@ GameObject:
   - component: {fileID: 6331246687065949545}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7165,10 +7249,10 @@ GameObject:
   - component: {fileID: 8606356606598831932}
   m_Layer: 0
   m_Name: Floor Piece.001
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!1 &6528420005895048703
 GameObject:
@@ -7284,10 +7368,10 @@ GameObject:
   - component: {fileID: 7976540911633295056}
   m_Layer: 0
   m_Name: Floor Piece
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!23 &6677798300674061226
 MeshRenderer:
@@ -7479,12 +7563,13 @@ GameObject:
   - component: {fileID: 3177844162216021115}
   - component: {fileID: 8747005852283648719}
   - component: {fileID: 8747005852283648720}
+  - component: {fileID: 8747005852283648721}
   m_Layer: 0
   m_Name: Glass Floor
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7161490616154920493
 Transform:
@@ -7514,7 +7599,7 @@ GameObject:
   - component: {fileID: 8557288016472743046}
   m_Layer: 0
   m_Name: Outer Wall.001
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7530,7 +7615,7 @@ GameObject:
   - component: {fileID: 1277831317730760318}
   m_Layer: 0
   m_Name: Door
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7723,10 +7808,10 @@ GameObject:
   - component: {fileID: 8362831716678148165}
   m_Layer: 0
   m_Name: Floor Piece.002
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!33 &7863834351372208139
 MeshFilter:
@@ -8252,6 +8337,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.03, z: 0}
   m_Center: {x: 0, y: -1.0986399e-17, z: 1.4551929e-10}
+--- !u!64 &8747005852283648721
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153958608037881440}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4820100440511985661, guid: 31c4c429d17520447953f097b59d8673, type: 3}
 --- !u!1 &8761532699785432448
 GameObject:
   m_ObjectHideFlags: 0
