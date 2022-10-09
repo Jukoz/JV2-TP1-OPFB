@@ -7,22 +7,22 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private GameObject goal;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
 
-    void Start()
+    void OnEnable()
     {
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent.enabled = false;
     }
-    
+
     void FixedUpdate()
     {
-        if (navMeshAgent != null) 
+        if (navMeshAgent.enabled) 
             navMeshAgent.destination = goal.transform.position;
     }
-    void Update()
+
+    void OnCollisionEnter(Collision collision)
     {
-        if (navMeshAgent == null)
-        {
-            Debug.Log("bad");
-            transform.position = Vector3.MoveTowards(transform.position, goal.transform.position, Time.deltaTime);
-        }
+        if (collision.gameObject.CompareTag("ground"))
+            navMeshAgent.enabled = true;
     }
+    
 }
