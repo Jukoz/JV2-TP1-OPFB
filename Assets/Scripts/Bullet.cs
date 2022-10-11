@@ -7,14 +7,21 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private bool isAlive = false;
+    //[SerializeField] private AudioSource shootingSound;
     private Vector3 spawnPointOffset = new Vector3(0f, 3.5f, 0f);
     private Renderer renderer;
 
+    private void Awake()
+    {
+        renderer = GetComponent<Renderer>();
+        //shootingSound = GetComponent<AudioSource>();
+    }
+
     private void OnEnable()
     {
-        if(renderer == null) renderer = GetComponent<Renderer>();
         isAlive = true;
         renderer.enabled = true;
+        //shootingSound.Play();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
         transform.position = player.transform.position + newSpawnOffset;
