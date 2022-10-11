@@ -36,7 +36,6 @@ public class BulletManager : MonoBehaviour
                     Debug.Log(bullet.activeSelf);
                     if(!bullet.activeSelf)
                     {
-                        Debug.Log("FIRE");
                         bullet.SetActive(true);
                         break;
                     }
