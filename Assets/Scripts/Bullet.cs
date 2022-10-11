@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
         transform.position = player.transform.position + newSpawnOffset;
-        transform.eulerAngles = new Vector3(player.transform.eulerAngles.x, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
+        transform.eulerAngles = player.transform.eulerAngles;
     }
 
     void Update()

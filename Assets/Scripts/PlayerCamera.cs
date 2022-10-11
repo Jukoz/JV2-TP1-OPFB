@@ -38,7 +38,7 @@ public class PlayerCamera : MonoBehaviour
         RaycastHit hit;
 
         Debug.DrawRay(center.transform.position, transform.TransformDirection(Vector3.back) * currentDistance, Color.green);
-        if (Physics.Raycast(center.transform.position, transform.TransformDirection(Vector3.back), out hit, currentDistance))
+        if (Physics.Raycast(center.transform.position, transform.TransformDirection(Vector3.back), out hit, currentDistance + proximitySpeed))
         {
             Debug.DrawRay(center.transform.position, transform.TransformDirection(Vector3.back) * hit.distance, Color.yellow);
             if(currentDistance > minDistance) currentDistance -= proximitySpeed;
@@ -47,7 +47,7 @@ public class PlayerCamera : MonoBehaviour
         {
             if (currentDistance < maxDistance)
             {
-                if (!Physics.Raycast(center.transform.position, transform.TransformDirection(Vector3.back), out hit, currentDistance + proximitySpeed))
+                if (!Physics.Raycast(center.transform.position, transform.TransformDirection(Vector3.back), out hit, currentDistance + (proximitySpeed * 2)))
                 {
                     currentDistance += proximitySpeed;
                 }
