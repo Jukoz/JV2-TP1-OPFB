@@ -20,10 +20,10 @@ public class PlayerMovement : MonoBehaviour
         vAxis = Input.GetAxisRaw("Vertical");
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 direction = Vector3.Normalize(new Vector3(hAxis, 0, vAxis));
-        rb.position += rb.transform.TransformDirection(direction) * speed * Time.fixedDeltaTime;
+        Vector3 newVelocity = rb.transform.TransformDirection(direction) * speed * Time.fixedDeltaTime;
+        rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
     }
 }
