@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private int kills = 0;
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OnAlienHit(GameObject alien)
+    {
+        if(alien.CompareTag("Alien"))
+        {
+            EnemyMovement enemyMovement = alien.GetComponent<EnemyMovement>();
+            kills++;
+            enemyMovement.Kill();
+        }
     }
 }

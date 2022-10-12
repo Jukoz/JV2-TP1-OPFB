@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   explosion: {fileID: 3528920277324863931}
+  gameManager: {fileID: 0}
   isAlive: 0
 --- !u!54 &-9044699797790792994
 Rigidbody:
@@ -384,7 +385,7 @@ GameObject:
   - component: {fileID: 3528920277324863931}
   - component: {fileID: 4646586917605778920}
   m_Layer: 0
-  m_Name: Disappear
+  m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -399,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 8261698827919865098}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.67, y: 0.67, z: 0.67}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2849728657130607812}
