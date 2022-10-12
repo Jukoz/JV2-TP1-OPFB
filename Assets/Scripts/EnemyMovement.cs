@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     void OnEnable()
     {
         goal = GameObject.Find("SpaceMarine");
+        alive = true;
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.enabled = false;
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
@@ -41,6 +42,7 @@ public class EnemyMovement : MonoBehaviour
     {
         explosion.gameObject.SetActive(true);
         explosion.Play();
+        alive = false;
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         Invoke("Death", 1.5f);
