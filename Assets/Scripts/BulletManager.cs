@@ -5,6 +5,7 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private List<GameObject> bullets;
     [SerializeField] private float cooldown;
     [SerializeField] private const float MAX_COOLDOWN = 0.15f;
@@ -14,9 +15,12 @@ public class BulletManager : MonoBehaviour
     {
         cooldown = 0;
         bullets = new List<GameObject>();
-        for(int x = 0; x < BULLET_CAP; x++)
+        Debug.Log(GameObject.FindGameObjectWithTag("GameController"));
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        for (int x = 0; x < BULLET_CAP; x++)
         {
             GameObject newBullet = Instantiate(prefab);
+            newBullet.GetComponent<Bullet>().SetGameManager(gameManager);
             bullets.Add(newBullet);
             newBullet.SetActive(false);
         }
