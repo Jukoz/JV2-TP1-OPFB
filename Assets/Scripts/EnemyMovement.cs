@@ -21,7 +21,6 @@ public class EnemyMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(navMeshAgent.enabled);
         if(alive)
         {
             if (navMeshAgent.enabled)

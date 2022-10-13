@@ -41,7 +41,6 @@ public class EnemySpawner : MonoBehaviour
         cooldown = MAX_COOLDOWN;
         foreach (GameObject enemy in enemies)
         {
-            Debug.Log(enemy.activeSelf);
             if(!enemy.activeSelf)
             {
                 enemy.transform.position = spawners[Random.Range(0, spawners.Count)].transform.position;

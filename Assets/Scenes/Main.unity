@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1466,6 +1466,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   speed: 1500
+  isGrounded: 0
+  raycastOffset: {x: 0, y: 0.3, z: 0}
+  raycastLength: 0.4
+  jumpForce: 50000
+  gravityForce: 8000
 --- !u!54 &1032903425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1475,7 +1480,7 @@ Rigidbody:
   m_GameObject: {fileID: 1032903422}
   serializedVersion: 2
   m_Mass: 1500
-  m_Drag: 2
+  m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -3057,7 +3062,7 @@ GameObject:
   - component: {fileID: 102590362088810333}
   m_Layer: 0
   m_Name: Door hinge.004
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3595,7 +3600,7 @@ GameObject:
   - component: {fileID: 620352727172205139}
   m_Layer: 0
   m_Name: Door Ring Bottom
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3838,7 +3843,7 @@ GameObject:
   - component: {fileID: 8107285516606317778}
   m_Layer: 0
   m_Name: Door Ring
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -3854,7 +3859,7 @@ GameObject:
   - component: {fileID: 1788971244331168306}
   m_Layer: 0
   m_Name: Door hinge.005
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4028,7 +4033,7 @@ GameObject:
   - component: {fileID: 6990736171513054326}
   m_Layer: 0
   m_Name: Door hinge.002
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4116,7 +4121,7 @@ GameObject:
   - component: {fileID: 932857495844579859}
   m_Layer: 0
   m_Name: Door hinge.006
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4346,7 +4351,7 @@ GameObject:
   - component: {fileID: 5032421118833231207}
   m_Layer: 0
   m_Name: Door hinge
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5230,7 +5235,7 @@ GameObject:
   - component: {fileID: 407018599070452296}
   m_Layer: 0
   m_Name: Door hinge.003
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5254,7 +5259,7 @@ GameObject:
   - component: {fileID: 4875555453330776207}
   m_Layer: 0
   m_Name: Door hinge.007
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5355,7 +5360,7 @@ GameObject:
   - component: {fileID: 8885901625419448725}
   m_Layer: 0
   m_Name: Door hinge.001
-  m_TagString: Untagged
+  m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,7 +15,6 @@ public class BulletManager : MonoBehaviour
     {
         cooldown = 0;
         bullets = new List<GameObject>();
-        Debug.Log(GameObject.FindGameObjectWithTag("GameController"));
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         for (int x = 0; x < BULLET_CAP; x++)
         {
@@ -37,7 +36,6 @@ public class BulletManager : MonoBehaviour
                 cooldown = MAX_COOLDOWN;
                 foreach (GameObject bullet in bullets)
                 {
-                    Debug.Log(bullet.activeSelf);
                     if(!bullet.activeSelf)
                     {
                         bullet.SetActive(true);
