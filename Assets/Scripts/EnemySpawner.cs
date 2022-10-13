@@ -12,16 +12,19 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> spawners;
     [SerializeField] private float cooldown;
     [SerializeField] private GameObject enemyPefab;
-    [SerializeField] private const int ENEMY_CAP = 20; 
+    [SerializeField] private const int ENEMY_CAP = 20;
+    [SerializeField] private GameManager gameManager;
     private List<GameObject> enemies;
     void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         spawners = GameObject.FindGameObjectsWithTag("Spawner").ToList();
         cooldown = MAX_COOLDOWN;
         enemies = new List<GameObject>();
         for (int i = 0; i < ENEMY_CAP; i++)
         {
             GameObject newEnemy = Instantiate(enemyPefab);
+            newEnemy.GetComponent<EnemyMovement>().SetGameManager(gameManager);
             enemies.Add(newEnemy);
             newEnemy.SetActive(false);
         }

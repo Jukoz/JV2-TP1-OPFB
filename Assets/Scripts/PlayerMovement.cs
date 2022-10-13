@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private float speed = 10;
     [SerializeField] public bool isGrounded;
     [SerializeField] public Vector3 raycastOffset = new Vector3(0, 0.3f, 0);
@@ -14,13 +15,16 @@ public class PlayerMovement : MonoBehaviour
 
     float hAxis = 0;
     float vAxis = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     private void Update()
     {
+        if (!isAlive()) return;
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
         RaycastHit hit;
@@ -34,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isAlive()) return;
         Vector3 direction = Vector3.Normalize(new Vector3(hAxis, 0, vAxis));
         Vector3 newVelocity = rb.transform.TransformDirection(direction) * speed * Time.fixedDeltaTime;
         rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
@@ -52,5 +57,15 @@ public class PlayerMovement : MonoBehaviour
         }
         Debug.Log("DOWN");
         rb.AddForce(Vector3.down * gravityForce);
+    }
+
+    public void Kill()
+    {
+        // Do some animation stuff;
+    }
+
+    public bool isAlive()
+    {
+        return gameManager.isAlive();
     }
 }

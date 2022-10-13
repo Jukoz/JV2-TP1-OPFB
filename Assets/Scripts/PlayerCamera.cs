@@ -6,6 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     [SerializeField] private float mouseSensitivity;
     [SerializeField] private GameObject playerBody;
+    [SerializeField] private PlayerMovement player;
     [SerializeField] private GameObject center;
     [SerializeField] private Vector2 smoothedVelocity;
     [SerializeField] private Vector2 currentLookingPos;
@@ -19,11 +20,13 @@ public class PlayerCamera : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
 
 
     void FixedUpdate()
     {
+        if (!player.isAlive()) return;
         Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         inputValues = Vector2.Scale(inputValues, new Vector2(mouseSensitivity, mouseSensitivity));
         smoothedVelocity.x = Mathf.Lerp(smoothedVelocity.x, inputValues.x, 1f);

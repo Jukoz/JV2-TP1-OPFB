@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.CompareTag("Alien"))
         {
             gameManager.OnAlienHit(other.gameObject);
+            this.gameObject.SetActive(false);
         }
         else if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {

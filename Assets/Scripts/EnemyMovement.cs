@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private AudioSource deathSFX;
+    [SerializeField] private CapsuleCollider capsuleCollider;
     private GameObject goal;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private bool alive;
@@ -15,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
         alive = true;
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.enabled = false;
+        this.capsuleCollider.enabled = true;
         this.gameObject.transform.GetChild(0).gameObject.SetActive(true);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
@@ -33,8 +37,20 @@ public class EnemyMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("ground"))
+        GameObject collided = collision.gameObject;
+        if (collided.CompareTag("ground"))
+        {
             navMeshAgent.enabled = true;
+        } else if(collided.CompareTag("Player"))
+        {
+            if(collided.gameObject.transform.position.y > (this.transform.position.y + 1f))
+            {
+                Kill();
+            } else
+            {
+                gameManager.OnPlayerHit(collided);
+            }
+        }
     }
     
     public void Kill()
@@ -42,8 +58,10 @@ public class EnemyMovement : MonoBehaviour
         explosion.gameObject.SetActive(true);
         explosion.Play();
         alive = false;
+        this.capsuleCollider.enabled = false;
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        deathSFX.Play();
         Invoke("Death", 1.5f);
     }
 
@@ -51,5 +69,10 @@ public class EnemyMovement : MonoBehaviour
     {
         explosion.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
+    }
+
+    public void SetGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
     }
 }

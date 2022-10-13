@@ -28,6 +28,7 @@ public class BulletManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.isAlive()) return;
         cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
         if (Input.GetButton("Fire1"))
         {
