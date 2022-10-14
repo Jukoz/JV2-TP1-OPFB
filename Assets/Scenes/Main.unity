@@ -546,6 +546,7 @@ MonoBehaviour:
   gameManager: {fileID: 0}
   bullets: []
   cooldown: 0
+  tripleShotCooldown: 0
 --- !u!1 &282840810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1829,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155645853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.7817745, y: 4.1038704, z: 28.08014}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3128,7 +3129,8 @@ MonoBehaviour:
   healingBonusPrefab: {fileID: 6319660280540615819, guid: 2ef37418cfb962cd8bca74555d24c6d6,
     type: 3}
   missileBonusPrefab: {fileID: 0}
-  tripleShotBonusPrefab: {fileID: 0}
+  tripleShotBonusPrefab: {fileID: 6857661954292522435, guid: aeb714fff50e4aabca8697548918b972,
+    type: 3}
   spawningChance: 80
 --- !u!1 &2077435170
 GameObject:

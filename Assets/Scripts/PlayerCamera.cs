@@ -26,8 +26,7 @@ public class PlayerCamera : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(Input.GetAxis("Mouse X"));
-        if (!player.isAlive()) return;
+        if (!player.IsAlive()) return;
         Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         inputValues = Vector2.Scale(inputValues, new Vector2(mouseSensitivity, mouseSensitivity));
         smoothedVelocity.x = Mathf.Lerp(smoothedVelocity.x, inputValues.x, 1f);

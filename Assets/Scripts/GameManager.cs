@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int lives;
     [SerializeField] private bool alive;
     private BonusManager bonusManager;
+    private BulletManager bulletManager;
 
     void Start()
     {
         lives = 5;
         alive = true;
         bonusManager = GameObject.Find("BonusManager").GetComponent<BonusManager>();
+        bulletManager = GameObject.Find("BulletManager").GetComponent<BulletManager>();
     }
 
     void Update()
@@ -56,6 +58,11 @@ public class GameManager : MonoBehaviour
     public void OnHealthBonusPickup()
     {
         lives++;
+    }
+
+    public void OnTripleShotPickup()
+    {
+        bulletManager.AddTripleShotTime();
     }
 
     public bool IsAlive()
