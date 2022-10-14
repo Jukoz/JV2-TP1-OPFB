@@ -42,7 +42,7 @@ public class Bullet : MonoBehaviour
 
         else if (other.gameObject.CompareTag("Spawner"))
         {
-            gameManager.OnSpawnerHit(other.gameObject);
+            //gameManager.OnSpawnerHit(other.gameObject);
         }
         else if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {

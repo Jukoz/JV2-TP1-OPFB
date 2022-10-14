@@ -25,16 +25,25 @@ public class EnemyHealth : MonoBehaviour
         GameObject collided = collision.gameObject;
         if(collided.CompareTag("Player"))
         {
-            if(collided.gameObject.transform.position.y > (this.transform.position.y + 1f))
-            {
-                Kill();
-            } else
+            if(collided.gameObject.transform.position.y < (this.transform.position.y + 1f))
             {
                 gameManager.OnPlayerHit(collided);
             }
+            Kill();
         }
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bullet"))
+        {
+            Debug.Log("BULE");
+            gameManager.OnAlienHit(this.gameObject);
+            Kill();
+        }
+
+    }
+
     public bool IsAlive()
     {
         return currentLifePoints > 0;
