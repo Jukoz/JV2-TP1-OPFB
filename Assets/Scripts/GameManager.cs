@@ -60,6 +60,11 @@ public class GameManager : MonoBehaviour
         lives++;
     }
 
+    public void OnMissilePickup()
+    {
+        Debug.Log("missile pickup");
+    }
+
     public void OnTripleShotPickup()
     {
         bulletManager.AddTripleShotTime();

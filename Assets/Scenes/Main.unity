@@ -3128,7 +3128,8 @@ MonoBehaviour:
   maxBonusPerType: 5
   healingBonusPrefab: {fileID: 6319660280540615819, guid: 2ef37418cfb962cd8bca74555d24c6d6,
     type: 3}
-  missileBonusPrefab: {fileID: 0}
+  missileBonusPrefab: {fileID: 7171504067025027473, guid: 72bb4530bfcf4f85caa83e860f084754,
+    type: 3}
   tripleShotBonusPrefab: {fileID: 6857661954292522435, guid: aeb714fff50e4aabca8697548918b972,
     type: 3}
   spawningChance: 80
