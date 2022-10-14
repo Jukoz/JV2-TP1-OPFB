@@ -24,7 +24,7 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < ENEMY_CAP; i++)
         {
             GameObject newEnemy = Instantiate(enemyPefab);
-            newEnemy.GetComponent<EnemyMovement>().SetGameManager(gameManager);
+            newEnemy.GetComponent<EnemyHealth>().SetGameManager(gameManager);
             enemies.Add(newEnemy);
             newEnemy.SetActive(false);
         }
@@ -37,6 +37,12 @@ public class EnemySpawner : MonoBehaviour
         {
             SpawnEnemy();
         }
+    }
+
+    public void RemoveSpawner(GameObject spawner)
+    {
+        Debug.Log("removed");
+        spawners.Remove(spawner);
     }
 
     private void SpawnEnemy()
