@@ -39,7 +39,6 @@ public class EnemyHealth : MonoBehaviour
         {
             Hit();
         }
-
     }
 
     public bool IsAlive()
