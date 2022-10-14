@@ -65,6 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isAlive()
     {
-        return gameManager.isAlive();
+        return gameManager.IsAlive();
     }
 }

@@ -33,17 +33,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Alien"))
-        {
-            gameManager.OnAlienHit(other.gameObject);
-            this.gameObject.SetActive(false);
-        }
-
-        else if (other.gameObject.CompareTag("Spawner"))
-        {
-            //gameManager.OnSpawnerHit(other.gameObject);
-        }
-        else if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
+        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {
             isAlive = false;
             renderer.enabled = false;

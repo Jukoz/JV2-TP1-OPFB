@@ -12,14 +12,22 @@ public class SpawnerHealth : MonoBehaviour
         currentLifePoints = maxHealth;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Hit(1); //manque const
+        }    
+    }
+
     public bool IsAlive()
     {
         return currentLifePoints > 0;
     }
     
-    public void Hit()
+    public void Hit(int damage)
     {
-        if(--currentLifePoints == 0)
+        if((currentLifePoints -= damage) <= 0)
             Kill();
     }
     
