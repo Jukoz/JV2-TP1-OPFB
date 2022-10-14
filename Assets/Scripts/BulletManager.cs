@@ -27,7 +27,7 @@ public class BulletManager : MonoBehaviour
 
     void Update()
     {
-        if (!gameManager.isAlive()) return;
+        if (!gameManager.IsAlive()) return;
         cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
         if (Input.GetButton("Fire1"))
         {
