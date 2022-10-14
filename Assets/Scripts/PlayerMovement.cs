@@ -55,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
                 isGrounded = false;
             }
         }
-        Debug.Log("DOWN");
         rb.AddForce(Vector3.down * gravityForce);
     }
 

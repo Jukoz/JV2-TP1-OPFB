@@ -39,6 +39,11 @@ public class Bullet : MonoBehaviour
             gameManager.OnAlienHit(other.gameObject);
             this.gameObject.SetActive(false);
         }
+
+        else if (other.gameObject.CompareTag("Spawner"))
+        {
+            gameManager.OnSpawnerHit(other.gameObject);
+        }
         else if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {
             isAlive = false;
@@ -47,7 +52,6 @@ public class Bullet : MonoBehaviour
             explosion.Play();
             Invoke("DelayDisable", 1.5f);
         }
-        
     }
 
     private void DelayDisable()

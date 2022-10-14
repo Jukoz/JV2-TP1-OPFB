@@ -185,6 +185,7 @@ GameObject:
   - component: {fileID: 616056485553046866}
   - component: {fileID: 616056485553046878}
   - component: {fileID: 3571286261611416124}
+  - component: {fileID: 4638281005253850613}
   m_Layer: 7
   m_Name: BobbleEnemy
   m_TagString: Alien
@@ -308,10 +309,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5940c65464907d7992d7c6c506df0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 3403903925019588047}
-  gameManager: {fileID: 0}
-  deathSFX: {fileID: 3571286261611416124}
-  capsuleCollider: {fileID: 616056485553046865}
 --- !u!54 &616056485553046878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -424,6 +421,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4638281005253850613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616056485553046870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e327fd69e2fa177a2851f2b119a6cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 3403903925019588047}
+  gameManager: {fileID: 0}
+  deathSFX: {fileID: 3571286261611416124}
+  capsuleCollider: {fileID: 616056485553046865}
+  lifes: 1
 --- !u!1 &616056485579276216
 GameObject:
   m_ObjectHideFlags: 0
