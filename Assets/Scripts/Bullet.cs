@@ -20,7 +20,6 @@ public class Bullet : MonoBehaviour
     {
         isAlive = true;
         renderer.enabled = true;
-        //shootingSound.Play();
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
         transform.position = player.transform.position + newSpawnOffset;

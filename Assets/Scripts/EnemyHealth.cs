@@ -37,7 +37,6 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log("BULE");
             gameManager.OnAlienHit(this.gameObject);
             Kill();
         }
