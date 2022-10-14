@@ -643,7 +643,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3adcee654e2b9348849b60973bf18cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 3
+  mouseSensitivity: 2.5
   playerBody: {fileID: 1032903422}
   player: {fileID: 0}
   center: {fileID: 2025832974}
