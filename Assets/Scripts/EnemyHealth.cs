@@ -37,9 +37,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Debug.Log("BULE");
-            gameManager.OnAlienHit(this.gameObject);
-            Kill();
+            Hit();
         }
 
     }
@@ -68,6 +66,7 @@ public class EnemyHealth : MonoBehaviour
         this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
         this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         deathSFX.Play();
+        gameManager.OnAlienKill(this.gameObject);
         Invoke("HandleDeath", 1.5f);
     }
 

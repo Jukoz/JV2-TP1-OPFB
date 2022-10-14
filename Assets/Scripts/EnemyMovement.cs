@@ -6,19 +6,19 @@ public class EnemyMovement : MonoBehaviour
 {
     private GameObject goal;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
-    private EnemyHealth _enemyHealth;
+    private EnemyHealth enemyHealth;
 
     void OnEnable()
     {
         goal = GameObject.Find("SpaceMarine");
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.enabled = false;
-        _enemyHealth = GetComponent<EnemyHealth>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
     void FixedUpdate()
     {
-        if(_enemyHealth.IsAlive())
+        if(enemyHealth.IsAlive())
         {
             if (navMeshAgent.enabled)
                 navMeshAgent.destination = goal.transform.position;
