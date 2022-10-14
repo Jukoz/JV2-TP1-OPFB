@@ -22,14 +22,15 @@ public class BonusManager : MonoBehaviour
         {
             GameObject newHealingBonus = Instantiate(healingBonusPrefab);
             // GameObject newMissileBonus = Instantiate(missileBonusPrefab);
-            // GameObject newTripleShotBonus = Instantiate(tripleShotBonusPrefab);
+            GameObject newTripleShotBonus = Instantiate(tripleShotBonusPrefab);
             newHealingBonus.GetComponent<HealthBonusPickup>().SetGameManager(gameManager);
+            newTripleShotBonus.GetComponent<TripleShotPickup>().SetGameManager(gameManager);
             healingBonuses.Add(newHealingBonus);
             // missileBonuses.Add(newMissileBonus);
-            // tripleShotBonuses.Add(newTripleShotBonus);
+            tripleShotBonuses.Add(newTripleShotBonus);
             newHealingBonus.SetActive(false);
             // newMissileBonus.SetActive(false);
-            // newTripleShotBonus.SetActive(false);
+            newTripleShotBonus.SetActive(false);
         }
     }
 
@@ -37,8 +38,7 @@ public class BonusManager : MonoBehaviour
     {
         if (Random.Range(0, 100) < spawningChance)
         {
-            Debug.Log("Spawn");
-            ActivateInactiveBonus(healingBonuses, position);
+            ActivateInactiveBonus(tripleShotBonuses, position);
         }
     }
 
@@ -48,7 +48,6 @@ public class BonusManager : MonoBehaviour
         {
             if (!bonus.activeSelf)
             {
-                Debug.Log("bonus: " + position);
                 bonus.transform.position = position;
                 bonus.SetActive(true);
                 break;
