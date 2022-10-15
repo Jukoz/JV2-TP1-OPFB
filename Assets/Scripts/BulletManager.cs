@@ -6,23 +6,22 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private List<GameObject> bullets;
     [SerializeField] private float cooldown;
     [SerializeField] private const float MAX_COOLDOWN = 0.15f;
     [SerializeField] private const int BULLET_CAP = 50;
     [SerializeField] private const float timeOnTripleShotPickup= 20;
     [SerializeField] private float tripleShotCooldown = 0;
+    private GameManager gameManager;
+    private List<GameObject> bullets;
 
     void Start()
     {
         cooldown = 0;
         bullets = new List<GameObject>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-        for (int x = 0; x < BULLET_CAP; x++)
+        for (int i = 0; i < BULLET_CAP; i++)
         {
             GameObject newBullet = Instantiate(prefab);
-            newBullet.GetComponent<Bullet>().SetGameManager(gameManager);
             bullets.Add(newBullet);
             newBullet.SetActive(false);
         }

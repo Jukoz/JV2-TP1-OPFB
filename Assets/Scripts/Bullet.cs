@@ -7,7 +7,6 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
-    [SerializeField] private GameManager gameManager;
     [SerializeField] private bool isAlive = false;
     private Vector3 spawnPointOffset = new Vector3(0f, 3.5f, 0f);
     private Renderer renderer;
@@ -54,10 +53,5 @@ public class Bullet : MonoBehaviour
     {
         explosion.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
-    }
-
-    public void SetGameManager(GameManager gameManager)
-    {
-        this.gameManager = gameManager;
     }
 }
