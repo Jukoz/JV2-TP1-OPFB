@@ -34,7 +34,7 @@ public class BulletManager : MonoBehaviour
         if (!gameManager.IsAlive()) return;
         cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
         tripleShotCooldown = Mathf.Max(0, tripleShotCooldown - Time.deltaTime);
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !Input.GetButton("Fire2"))
         {
             if(cooldown == 0)
             {

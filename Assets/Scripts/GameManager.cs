@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         livesText.text = lives.ToString();
         tripleShotText.text = bulletManager.GetTripleShotTime().ToString("0.0");
+        missileText.text = missileManager.GetMissiles().ToString();
     }
 
     public void OnAlienKill(GameObject alien)

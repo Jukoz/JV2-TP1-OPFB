@@ -30,7 +30,7 @@ public class MissileManager : MonoBehaviour
     {
         if (!gameManager.IsAlive()) return;
         cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
-        if (Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire2") && !Input.GetButton("Fire1"))
         {
             if(cooldown == 0 && missilesLeft > 0)
             {
@@ -56,5 +56,10 @@ public class MissileManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public int GetMissiles()
+    {
+        return missilesLeft;
     }
 }
