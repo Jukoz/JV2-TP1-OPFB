@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         GameObject collided = collision.gameObject;
         if(collided.CompareTag("Player"))
         {
+            if (!gameManager.IsAlive()) return;
             if(collided.gameObject.transform.position.y < (this.transform.position.y + 1f))
             {
                 gameManager.OnPlayerHit(collided);

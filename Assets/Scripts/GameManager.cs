@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         if (player.CompareTag("Player"))
         {
+            if (lives == 0) return;
             PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
             lives--;
             if(lives == 0)

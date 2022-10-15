@@ -9,6 +9,7 @@ public class EnemyMovement : MonoBehaviour
     private GameObject goal;
     private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private EnemyHealth enemyHealth;
+    Vector3 lastPosition = Vector3.zero;
 
     void OnEnable()
     {
@@ -28,8 +29,11 @@ public class EnemyMovement : MonoBehaviour
         {
             if (navMeshAgent.enabled)
                 navMeshAgent.destination = goal.transform.position;
+
+            float speed = (transform.position - lastPosition).magnitude;
+            lastPosition = transform.position;
+            animator.SetFloat("Speed", speed);
         }
-        animator.SetFloat("Speed", rb.velocity.magnitude); //
     }
 
     void OnCollisionEnter(Collision collision)
