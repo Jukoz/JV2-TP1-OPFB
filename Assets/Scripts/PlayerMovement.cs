@@ -8,8 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     [SerializeField] private float speed = 10;
     [SerializeField] public bool isGrounded;
-    [SerializeField] public Vector3 raycastOffset = new Vector3(0, 0.3f, 0);
-    [SerializeField] public float raycastLength = 0.4f;
+    [SerializeField] public Vector3 raycastOffset = new Vector3(0, 1.2f, 0);
+    [SerializeField] public float raycastLength = 1.5f;
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravityForce;
 
@@ -31,8 +31,11 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position + raycastOffset, Vector3.down, out hit, raycastLength))
         {
             isGrounded = (hit.transform.tag == "ground");
+        } else
+        {
+            isGrounded = false;
         }
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.down) * raycastLength, Color.gray);
+        Debug.DrawRay(transform.position + raycastOffset, transform.TransformDirection(Vector3.down) * raycastLength, Color.gray);
         Jump();
     }
 

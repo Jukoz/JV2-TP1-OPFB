@@ -1685,8 +1685,8 @@ MonoBehaviour:
   isGrounded: 0
   raycastOffset: {x: 0, y: 0.3, z: 0}
   raycastLength: 0.4
-  jumpForce: 50000
-  gravityForce: 8000
+  jumpForce: 62000
+  gravityForce: 8500
 --- !u!54 &1032903425
 Rigidbody:
   m_ObjectHideFlags: 0
