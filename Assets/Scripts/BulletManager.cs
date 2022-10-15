@@ -67,4 +67,9 @@ public class BulletManager : MonoBehaviour
             }
         }
     }
+
+    public float GetTripleShotTime()
+    {
+        return tripleShotCooldown;
+    }
 }

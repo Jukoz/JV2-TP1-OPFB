@@ -23,21 +23,6 @@ public class BonusManager : MonoBehaviour
             InstantiateBonus(healingBonuses, healingBonusPrefab, gameManager);
             InstantiateBonus(missileBonuses, missileBonusPrefab, gameManager);
             InstantiateBonus(tripleShotBonuses, tripleShotBonusPrefab, gameManager);
-            //GameObject newHealingBonus = Instantiate(healingBonusPrefab);
-            //GameObject newMissileBonus = Instantiate(missileBonusPrefab);
-            //GameObject newTripleShotBonus = Instantiate(tripleShotBonusPrefab);
-            //newHealingBonus.GetComponent<HealthBonusPickup>().SetGameManager(gameManager);
-            //newMissileBonus.GetComponent<MissilePickup>().SetGameManager(gameManager);
-            //newTripleShotBonus.GetComponent<TripleShotPickup>().SetGameManager(gameManager);
-            //newHealingBonus.transform.parent = this.transform.parent;
-            //newMissileBonus.transform.parent = this.transform.parent;
-            //newTripleShotBonus.transform.parent = this.transform.parent;
-            //healingBonuses.Add(newHealingBonus);
-            //missileBonuses.Add(newMissileBonus);
-            //tripleShotBonuses.Add(newTripleShotBonus);
-            //newHealingBonus.SetActive(false);
-            //newMissileBonus.SetActive(false);
-            //newTripleShotBonus.SetActive(false);
         }
     }
 

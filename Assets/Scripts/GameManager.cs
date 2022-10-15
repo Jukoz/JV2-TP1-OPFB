@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioSource marineHurtSFX;
     [SerializeField] private AudioSource marineDeathSFX;
     [SerializeField] private TMP_Text livesText;
+    [SerializeField] private TMP_Text tripleShotText;
+    [SerializeField] private TMP_Text missileText;
     [SerializeField] private int kills = 0;
     [SerializeField] private int lives;
     [SerializeField] private bool alive;
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         livesText.text = lives.ToString();
+        tripleShotText.text = bulletManager.GetTripleShotTime().ToString("0.0");
     }
 
     public void OnAlienKill(GameObject alien)
