@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
+        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Bonus"))
         {
             isAlive = false;
             renderer.enabled = false;

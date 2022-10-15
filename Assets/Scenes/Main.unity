@@ -1067,8 +1067,8 @@ MonoBehaviour:
   marineHurtSFX: {fileID: 1329190106}
   marineDeathSFX: {fileID: 464699277}
   livesText: {fileID: 1887260595}
-  tripleShotText: {fileID: 0}
-  rocketText: {fileID: 0}
+  tripleShotText: {fileID: 2077435172}
+  missileText: {fileID: 0}
   kills: 0
   lives: 999
   alive: 0

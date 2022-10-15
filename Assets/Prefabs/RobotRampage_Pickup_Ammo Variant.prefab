@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotRampage_Pickup_Ammo Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1e4ad14d83b0e243be75a80ca56af78,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bonus
+      objectReference: {fileID: 0}
     - target: {fileID: 3725102176391765030, guid: e1e4ad14d83b0e243be75a80ca56af78,
         type: 3}
       propertyPath: m_Enabled

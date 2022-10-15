@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pickup Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 596f17f5f6d5a433b9d367360ec103a9, type: 3}
+      propertyPath: m_TagString
+      value: Bonus
+      objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 596f17f5f6d5a433b9d367360ec103a9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -77,18 +81,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6857661954292489071}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &896632945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6857661954292522435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c94f68f8bdaf035958d2d743fcac2143, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &5570737148711225720
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102,6 +94,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13, y: 10, z: 3}
   m_Center: {x: 0, y: 3, z: 0}
+--- !u!114 &896632945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857661954292522435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94f68f8bdaf035958d2d743fcac2143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7224549745511099042
 MonoBehaviour:
   m_ObjectHideFlags: 0
