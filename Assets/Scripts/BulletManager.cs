@@ -6,11 +6,12 @@ using UnityEngine;
 public class BulletManager : MonoBehaviour
 {
     [SerializeField] private GameObject prefab;
-    [SerializeField] private float cooldown;
     [SerializeField] private const float MAX_COOLDOWN = 0.15f;
-    [SerializeField] private const int BULLET_CAP = 50;
-    [SerializeField] private const float timeOnTripleShotPickup= 20;
+    [SerializeField] private const int BULLET_CAP = 75;
+    [SerializeField] private const float DURATION_TRIPLE_SHOT= 20;
+    [SerializeField] private const float ANGLE_TRIPLE_SHOT = 30;
     [SerializeField] private float tripleShotCooldown = 0;
+    [SerializeField] private float cooldown;
     private GameManager gameManager;
     private List<GameObject> bullets;
 
@@ -22,6 +23,7 @@ public class BulletManager : MonoBehaviour
         for (int i = 0; i < BULLET_CAP; i++)
         {
             GameObject newBullet = Instantiate(prefab);
+            newBullet.transform.parent = this.transform.parent;
             bullets.Add(newBullet);
             newBullet.SetActive(false);
         }
@@ -36,12 +38,12 @@ public class BulletManager : MonoBehaviour
         {
             if(cooldown == 0)
             {
-                SpawnBullet(Vector3.zero);
+                SpawnBullet(0);
                 cooldown += MAX_COOLDOWN;
                 if (tripleShotCooldown > 0)
                 {
-                    SpawnBullet(Vector3.left);
-                    SpawnBullet(Vector3.right);
+                    SpawnBullet(-ANGLE_TRIPLE_SHOT);
+                    SpawnBullet(ANGLE_TRIPLE_SHOT);
                 }
             }
         }
@@ -49,16 +51,18 @@ public class BulletManager : MonoBehaviour
 
     public void AddTripleShotTime()
     {
-        tripleShotCooldown += timeOnTripleShotPickup;
+        tripleShotCooldown += DURATION_TRIPLE_SHOT;
     }
 
-    private void SpawnBullet(Vector3 offset)
+    private void SpawnBullet(float angle)
     {
         foreach (GameObject bullet in bullets)
         {
             if(!bullet.activeSelf)
             {
-                bullet.GetComponent<Bullet>().EnableBullet(offset);
+                GameObject player = GameObject.FindGameObjectWithTag("Player");
+                bullet.transform.eulerAngles = player.transform.eulerAngles + new Vector3(0, angle, 0);
+                bullet.SetActive(true);
                 break;
             }
         }

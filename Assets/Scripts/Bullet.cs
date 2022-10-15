@@ -22,19 +22,13 @@ public class Bullet : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         isAlive = true;
         renderer.enabled = true;
-        transform.eulerAngles = player.transform.eulerAngles;
+        Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
+        transform.position = player.transform.position + newSpawnOffset;
     }
 
     void Update()
     {
         if(isAlive) transform.Translate(0, 0, speed, Space.Self);
-    }
-
-    public void EnableBullet(Vector3 offset)
-    {
-        gameObject.SetActive(true);
-        Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
-        transform.position = player.transform.position + newSpawnOffset + offset;
     }
 
     private void OnTriggerEnter(Collider other)

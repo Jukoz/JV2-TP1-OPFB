@@ -20,19 +20,34 @@ public class BonusManager : MonoBehaviour
         tripleShotBonuses = new List<GameObject>();
         for (int i = 0; i < maxBonusPerType; i++)
         {
-            GameObject newHealingBonus = Instantiate(healingBonusPrefab);
-            GameObject newMissileBonus = Instantiate(missileBonusPrefab);
-            GameObject newTripleShotBonus = Instantiate(tripleShotBonusPrefab);
-            newHealingBonus.GetComponent<HealthBonusPickup>().SetGameManager(gameManager);
-            newMissileBonus.GetComponent<MissilePickup>().SetGameManager(gameManager);
-            newTripleShotBonus.GetComponent<TripleShotPickup>().SetGameManager(gameManager);
-            healingBonuses.Add(newHealingBonus);
-            missileBonuses.Add(newMissileBonus);
-            tripleShotBonuses.Add(newTripleShotBonus);
-            newHealingBonus.SetActive(false);
-            newMissileBonus.SetActive(false);
-            newTripleShotBonus.SetActive(false);
+            InstantiateBonus(healingBonuses, healingBonusPrefab, gameManager);
+            InstantiateBonus(missileBonuses, missileBonusPrefab, gameManager);
+            InstantiateBonus(tripleShotBonuses, tripleShotBonusPrefab, gameManager);
+            //GameObject newHealingBonus = Instantiate(healingBonusPrefab);
+            //GameObject newMissileBonus = Instantiate(missileBonusPrefab);
+            //GameObject newTripleShotBonus = Instantiate(tripleShotBonusPrefab);
+            //newHealingBonus.GetComponent<HealthBonusPickup>().SetGameManager(gameManager);
+            //newMissileBonus.GetComponent<MissilePickup>().SetGameManager(gameManager);
+            //newTripleShotBonus.GetComponent<TripleShotPickup>().SetGameManager(gameManager);
+            //newHealingBonus.transform.parent = this.transform.parent;
+            //newMissileBonus.transform.parent = this.transform.parent;
+            //newTripleShotBonus.transform.parent = this.transform.parent;
+            //healingBonuses.Add(newHealingBonus);
+            //missileBonuses.Add(newMissileBonus);
+            //tripleShotBonuses.Add(newTripleShotBonus);
+            //newHealingBonus.SetActive(false);
+            //newMissileBonus.SetActive(false);
+            //newTripleShotBonus.SetActive(false);
         }
+    }
+
+    public void InstantiateBonus(List<GameObject> bonusList, GameObject prefab, GameManager gameManager)
+    {
+        GameObject newBonus = Instantiate(prefab);
+        newBonus.GetComponent<BonusPickup>().SetGameManager(gameManager);
+        newBonus.transform.parent = this.transform.parent;
+        bonusList.Add(newBonus);
+        newBonus.SetActive(false);
     }
 
     public void SpawnBonus(Vector3 position)

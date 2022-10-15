@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TripleShotPickup : MonoBehaviour
+public class TripleShotPickup : BonusPickup
 {
-    private GameManager gameManager;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -13,10 +11,5 @@ public class TripleShotPickup : MonoBehaviour
             gameObject.SetActive(false);
             gameManager.OnTripleShotPickup();
         }
-    }
-
-    public void SetGameManager(GameManager gameManager)
-    {
-        this.gameManager = gameManager;
     }
 }

@@ -3,10 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthBonusPickup : MonoBehaviour
-{
-    private GameManager gameManager;
-
+public class HealthBonusPickup : BonusPickup
+{ 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -14,10 +12,5 @@ public class HealthBonusPickup : MonoBehaviour
             gameObject.SetActive(false);
             gameManager.OnHealthBonusPickup();
         }
-    }
-
-    public void SetGameManager(GameManager gameManager)
-    {
-        this.gameManager = gameManager;
     }
 }
