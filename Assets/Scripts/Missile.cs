@@ -14,6 +14,16 @@ public class Missile : MonoBehaviour
         if(gameObject.activeSelf) transform.Translate(0, 0, speed * Time.deltaTime , Space.Self);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        gameObject.SetActive(false);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player");

@@ -14,12 +14,18 @@ public class SpawnerHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+
+        if (other.CompareTag("Bullet"))
         {
             Hit(1); //manque const
-        }    
-    }
+        }
+        else if (other.CompareTag("Missile"))
+        {
 
+            Hit(5);
+        }
+    }
+    
     public bool IsAlive()
     {
         return currentLifePoints > 0;

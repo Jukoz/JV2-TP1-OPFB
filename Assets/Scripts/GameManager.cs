@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private bool alive;
     private BonusManager bonusManager;
     private BulletManager bulletManager;
+    private MissileManager missileManager;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         alive = true;
         bonusManager = GameObject.Find("BonusManager").GetComponent<BonusManager>();
         bulletManager = GameObject.Find("BulletManager").GetComponent<BulletManager>();
+        missileManager = GameObject.Find("MissileManager").GetComponent<MissileManager>();
     }
 
     void Update()
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     public void OnMissilePickup()
     {
-        Debug.Log("missile pickup");
+        missileManager.AddMissiles();
     }
 
     public void OnTripleShotPickup()

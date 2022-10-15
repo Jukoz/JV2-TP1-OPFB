@@ -8,11 +8,14 @@ public class MissileManager : MonoBehaviour
     [SerializeField] private const int MISSILE_CAP = 10;
     [SerializeField] private const float MAX_COOLDOWN = 2;
     [SerializeField] private GameObject prefab;
+    [SerializeField] private int missilesLeft = 0;
+    [SerializeField] private const int MISSILES_PER_PICKUP = 5;
     private List<GameObject> missiles;
     private GameManager gameManager;
     void Start()
     {
         cooldown = 0;
+        missilesLeft = 0;
         missiles = new List<GameObject>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         for (int i = 0; i < MISSILE_CAP; i++)
@@ -29,12 +32,18 @@ public class MissileManager : MonoBehaviour
         cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
         if (Input.GetButton("Fire2"))
         {
-            if(cooldown == 0)
+            if(cooldown == 0 && missilesLeft > 0)
             {
                 SpawnMissile();
                 cooldown += MAX_COOLDOWN;
+                missilesLeft--;
             }
         }
+    }
+
+    public void AddMissiles()
+    {
+        missilesLeft += MISSILES_PER_PICKUP;
     }
 
     private void SpawnMissile()
