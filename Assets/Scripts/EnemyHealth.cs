@@ -36,7 +36,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        Debug.Log(other.tag);
+        if (other.CompareTag("Bullet") || other.CompareTag("Splash"))
         {
             Hit(1);
         }

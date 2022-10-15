@@ -8,6 +8,7 @@ public class Missile : MonoBehaviour
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private GameObject rocket;
+    [SerializeField] private GameObject splashArea;
     [SerializeField] private bool isAlive = false;
     private GameObject player;
     private Vector3 spawnPointOffset = new Vector3(0f, 3.5f, 0f);
@@ -15,6 +16,7 @@ public class Missile : MonoBehaviour
     private void OnEnable()
     {
         rocket.SetActive(true);
+        splashArea.SetActive(false);
         isAlive = true;
         player = GameObject.FindGameObjectWithTag("Player");
         transform.eulerAngles = player.transform.eulerAngles;
@@ -32,6 +34,7 @@ public class Missile : MonoBehaviour
         if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Bonus"))
         {
             rocket.SetActive(false);
+            splashArea.SetActive(true);
             explosion.gameObject.SetActive(true);
             explosion.Play();
             isAlive = false;
