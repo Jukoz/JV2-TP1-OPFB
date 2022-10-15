@@ -12,6 +12,8 @@ public class BulletManager : MonoBehaviour
     [SerializeField] private const float ANGLE_TRIPLE_SHOT = 30;
     [SerializeField] private float tripleShotCooldown = 0;
     [SerializeField] private float cooldown;
+    [SerializeField] private AudioSource shootSFX;
+    [SerializeField] private AudioSource tripleSFX;
     private GameManager gameManager;
     private List<GameObject> bullets;
 
@@ -42,8 +44,12 @@ public class BulletManager : MonoBehaviour
                 cooldown += MAX_COOLDOWN;
                 if (tripleShotCooldown > 0)
                 {
+                    tripleSFX.Play();
                     SpawnBullet(-ANGLE_TRIPLE_SHOT);
                     SpawnBullet(ANGLE_TRIPLE_SHOT);
+                } else
+                {
+                    shootSFX.Play();
                 }
             }
         }

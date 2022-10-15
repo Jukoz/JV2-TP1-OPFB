@@ -8,6 +8,7 @@ public class BonusManager : MonoBehaviour
     [SerializeField] private GameObject healingBonusPrefab;
     [SerializeField] private GameObject missileBonusPrefab;
     [SerializeField] private GameObject tripleShotBonusPrefab;
+    [SerializeField] private AudioSource spawnSFX;
     [SerializeField] private int spawningChance = 80; 
     private List<GameObject> healingBonuses;
     private List<GameObject> missileBonuses;
@@ -39,6 +40,7 @@ public class BonusManager : MonoBehaviour
     {
         if (Random.Range(0, 100) < spawningChance)
         {
+            spawnSFX.Play();
             float bonusType = Random.Range(0, 3);
             if(bonusType < 1)
                 ActivateInactiveBonus(healingBonuses, position);

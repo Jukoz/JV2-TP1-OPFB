@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float raycastLength = 1.5f;
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravityForce;
+    [SerializeField] protected AudioSource pickupSFX;
 
     float hAxis = 0;
     float vAxis = 0;
@@ -69,5 +70,13 @@ public class PlayerMovement : MonoBehaviour
     public bool IsAlive()
     {
         return gameManager.IsAlive();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bonus"))
+        {
+            pickupSFX.Play();
+        }
     }
 }
