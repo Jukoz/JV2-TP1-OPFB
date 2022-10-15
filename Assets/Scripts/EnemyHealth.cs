@@ -37,7 +37,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Hit();
+            Hit(1);
+        }
+        else if (other.CompareTag("Missile"))
+        {
+            Hit(5);
         }
     }
 
@@ -51,9 +55,9 @@ public class EnemyHealth : MonoBehaviour
         this.gameManager = gameManager;
     }
 
-    public void Hit()
+    public void Hit(int damage)
     {
-        if(--currentLifePoints == 0)
+        if((currentLifePoints -= damage) <= 0)
             Kill();
     }
     
