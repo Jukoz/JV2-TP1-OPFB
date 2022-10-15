@@ -178,7 +178,6 @@ GameObject:
   m_Component:
   - component: {fileID: 616056485553046867}
   - component: {fileID: 616056485553046868}
-  - component: {fileID: 616056485553046869}
   - component: {fileID: 616056485553046879}
   - component: {fileID: 616056485553046864}
   - component: {fileID: 616056485553046865}
@@ -231,22 +230,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &616056485553046869
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 616056485553046870}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 051c9a76dfa15684b8cb262145184f80, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 051c9a76dfa15684b8cb262145184f80, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!195 &616056485553046879
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -309,6 +292,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5940c65464907d7992d7c6c506df0ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 616056485553046868}
+  rb: {fileID: 0}
 --- !u!54 &616056485553046878
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -434,10 +419,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 3403903925019588047}
-  gameManager: {fileID: 0}
   deathSFX: {fileID: 3571286261611416124}
   capsuleCollider: {fileID: 616056485553046865}
-  lifes: 1
+  maxHealth: 1
+  currentLifePoints: 0
 --- !u!1 &616056485579276216
 GameObject:
   m_ObjectHideFlags: 0
