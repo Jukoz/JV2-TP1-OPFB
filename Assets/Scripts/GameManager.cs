@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text tripleShotText;
     [SerializeField] private TMP_Text missileText;
-    [SerializeField] private int kills = 0;
+    [SerializeField] private const float INVICIBILITY_MAX = 3;
+    [SerializeField] private float invicibility;
     [SerializeField] private int lives;
     [SerializeField] private bool alive;
     private BonusManager bonusManager;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     {
         lives = 5;
         alive = true;
+        invicibility = 0;
         bonusManager = GameObject.Find("BonusManager").GetComponent<BonusManager>();
         bulletManager = GameObject.Find("BulletManager").GetComponent<BulletManager>();
         missileManager = GameObject.Find("MissileManager").GetComponent<MissileManager>();
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        invicibility = Mathf.Min(INVICIBILITY_MAX, invicibility + Time.deltaTime);
         livesText.text = lives.ToString();
         tripleShotText.text = bulletManager.GetTripleShotTime().ToString("0.0");
         missileText.text = missileManager.GetMissiles().ToString();
@@ -39,7 +42,6 @@ public class GameManager : MonoBehaviour
         {
             EnemyMovement enemyMovement = alien.GetComponent<EnemyMovement>();
             bonusManager.SpawnBonus(alien.gameObject.transform.position);
-            kills++;
         }
     }
 
@@ -48,16 +50,20 @@ public class GameManager : MonoBehaviour
         if (player.CompareTag("Player"))
         {
             if (lives == 0) return;
-            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-            lives--;
-            if(lives == 0)
+            if(invicibility == INVICIBILITY_MAX)
             {
-                playerMovement.Kill();
-                marineDeathSFX.Play();
-                alive = false;
-            } else
-            {
-                marineHurtSFX.Play();
+                PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+                lives--;
+                invicibility = 0;
+                if(lives == 0)
+                {
+                    playerMovement.Kill();
+                    marineDeathSFX.Play();
+                    alive = false;
+                } else
+                {
+                    marineHurtSFX.Play();
+                }
             }
         }
     }
