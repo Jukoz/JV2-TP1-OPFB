@@ -15444,6 +15444,7 @@ GameObject:
   - component: {fileID: 4365846595688258769}
   - component: {fileID: 4365846595688258767}
   - component: {fileID: 4365846595688258770}
+  - component: {fileID: 4365846595688258772}
   m_Layer: 0
   m_Name: RobotRampage_Bot_v1
   m_TagString: Untagged
@@ -15655,7 +15656,7 @@ Transform:
   m_GameObject: {fileID: 4365846595678875490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.18433, y: -0.89136887, z: 20.160406}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4365846595679171374}
@@ -16864,6 +16865,7 @@ MonoBehaviour:
   capsuleCollider: {fileID: 4365846595688258768}
   maxHealth: 50
   currentLifePoints: 0
+  gameManager: {fileID: 475218135}
 --- !u!136 &4365846595688258768
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16930,6 +16932,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &4365846595688258772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4365846595678875490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42cd9b9713c1e2c409e8fb13a71afdb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1032903422}
+  heightOffset: 15
 --- !u!1 &4518504463689247257
 GameObject:
   m_ObjectHideFlags: 0
