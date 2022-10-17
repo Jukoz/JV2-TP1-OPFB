@@ -1,15 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MissileManager : MonoBehaviour
 {
+    private const int MISSILE_CAP = 10;
+    private const float MAX_COOLDOWN = 2;
+    private const int MISSILES_PER_PICKUP = 5;
     [SerializeField] private float cooldown;
-    [SerializeField] private const int MISSILE_CAP = 10;
-    [SerializeField] private const float MAX_COOLDOWN = 2;
     [SerializeField] private GameObject prefab;
     [SerializeField] private int missilesLeft = 0;
-    [SerializeField] private const int MISSILES_PER_PICKUP = 5;
     private List<GameObject> missiles;
     private GameManager gameManager;
     void Start()

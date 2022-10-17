@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -14,15 +12,13 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float minDistance = 5;
     [SerializeField] private float currentDistance = 40;
     [SerializeField] private float proximitySpeed = 0.1f;
-
-
+    
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
-
 
     void FixedUpdate()
     {

@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public const int BULLET_DAMAGE = 1;
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private bool isAlive = false;
@@ -46,6 +44,6 @@ public class Bullet : MonoBehaviour
     private void DelayDisable()
     {
         explosion.gameObject.SetActive(false);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

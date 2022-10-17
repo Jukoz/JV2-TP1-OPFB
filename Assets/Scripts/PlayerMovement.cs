@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameManager gameManager;
-    [SerializeField] private float speed = 10;
     [SerializeField] public bool isGrounded;
     [SerializeField] public Vector3 raycastOffset = new Vector3(0, 1.2f, 0);
     [SerializeField] public float raycastLength = 1.5f;
+    [SerializeField] protected AudioSource pickupSFX;
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private float speed = 10;
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravityForce;
-    [SerializeField] protected AudioSource pickupSFX;
 
-    float hAxis = 0;
-    float vAxis = 0;
+    private float hAxis = 0;
+    private float vAxis = 0;
 
     void Start()
     {
@@ -46,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 newVelocity = rb.transform.TransformDirection(direction) * speed * Time.fixedDeltaTime;
         rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
     }
+    
+    public bool IsAlive()
+    {
+        return gameObject.GetComponent<PlayerHealth>().IsAlive();
+    }
 
     private void Jump()
     {
@@ -60,12 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
         rb.AddForce(Vector3.down * gravityForce);
     }
-
-    public bool IsAlive()
-    {
-        return gameObject.GetComponent<PlayerHealth>().IsAlive();
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bonus"))
