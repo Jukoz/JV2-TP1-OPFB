@@ -428,8 +428,9 @@ GameObject:
   - component: {fileID: 935982954}
   - component: {fileID: 935982957}
   - component: {fileID: 1972007997910665478}
+  - component: {fileID: 8327020962969760590}
   m_Layer: 0
-  m_Name: RobotRampage_Pickup_Health Variant
+  m_Name: HealthPickup
   m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -492,7 +493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe30199b3245fdf3bb45ed23001e79f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSFX: {fileID: 1972007997910665478}
 --- !u!82 &1972007997910665478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -589,3 +589,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8327020962969760590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319660280540615819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba1a8f78da570a18bda75db2b2b334a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 0
