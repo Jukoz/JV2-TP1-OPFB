@@ -33,9 +33,12 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet") || other.CompareTag("Splash"))
+        if (other.CompareTag("Bullet"))
         {
             Hit(Bullet.BULLET_DAMAGE);
+        } else if (other.CompareTag("Splash"))
+        {
+
         }
         else if (other.CompareTag("Missile"))
         {

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Missile : MonoBehaviour
 {
     public const int MISSILE_DAMAGE = 5;
+    public const int SPLASH_DAMAGE = 1;
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private GameObject rocket;
