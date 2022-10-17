@@ -7,8 +7,8 @@ public class ShootingBoss : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private BulletManager bulletManager;
     [SerializeField] private MissileManager missileManager;
-    [SerializeField] private float bossHeightOffset = 15;
-    [SerializeField] private float playerHeightOffset = 5;
+    [SerializeField] private float bossHeightOffset = 0;
+    [SerializeField] private float playerHeightOffset = 20;
     [SerializeField] private float shootingCooldown;
     private const float SHOOTING_COOLDOWN_MAX = 0.5f;
 
@@ -26,7 +26,7 @@ public class ShootingBoss : MonoBehaviour
         shootingCooldown = Mathf.Max(0, shootingCooldown - Time.deltaTime);
         Vector3 gunPosition = transform.position + new Vector3(0, bossHeightOffset, 0);
         Vector3 playerPosition = player.transform.position + new Vector3(0, playerHeightOffset, 0);
-        Vector3 difference = playerPosition - gunPosition;
+        Vector3 difference = new Vector3(Mathf.Abs(playerPosition.x - gunPosition.x),Mathf.Abs(playerPosition.y - gunPosition.y), Mathf.Abs(playerPosition.z - gunPosition.z));//playerPosition - gunPosition;
         RaycastHit hit;
         Debug.DrawRay(gunPosition, difference, Color.red);
         if (Physics.Raycast(gunPosition, difference, out hit))
