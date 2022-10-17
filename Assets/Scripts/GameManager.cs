@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text tripleShotText;
     [SerializeField] private TMP_Text missileText;
+    private EnemySpawner spawnerManager;
     private BonusManager bonusManager;
     private BulletManager bulletManager;
     private MissileManager missileManager;
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         bonusManager = GameObject.Find("BonusManager").GetComponent<BonusManager>();
         bulletManager = GameObject.Find("BulletManager").GetComponent<BulletManager>();
         missileManager = GameObject.Find("MissileManager").GetComponent<MissileManager>();
+        spawnerManager = GameObject.Find("SpawnerManager").GetComponent<EnemySpawner>();
     }
 
     void Update()
@@ -72,5 +74,10 @@ public class GameManager : MonoBehaviour
     public bool IsAlive()
     {
         return playerHealth.IsAlive();
+    }
+
+    public void OnSpawnerKill(GameObject spawner)
+    {
+        spawnerManager.RemoveSpawner(spawner);
     }
 }

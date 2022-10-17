@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
+    private const float MAX_COOLDOWN = 0.15f;
+    private const int BULLET_CAP = 75;
+    private const float DURATION_TRIPLE_SHOT= 20;
+    private const float ANGLE_TRIPLE_SHOT = 30;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private const float MAX_COOLDOWN = 0.15f;
-    [SerializeField] private const int BULLET_CAP = 75;
-    [SerializeField] private const float DURATION_TRIPLE_SHOT= 20;
-    [SerializeField] private const float ANGLE_TRIPLE_SHOT = 30;
     [SerializeField] private float tripleShotCooldown = 0;
     [SerializeField] private float cooldown;
     [SerializeField] private AudioSource shootSFX;
