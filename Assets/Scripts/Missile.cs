@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    public const int MISSILE_DAMAGE = 5;
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private GameObject rocket;
@@ -26,7 +24,8 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        if(isAlive) transform.Translate(0, 0, speed * Time.deltaTime , Space.Self);
+        if(isAlive)
+            transform.Translate(0, 0, speed * Time.deltaTime , Space.Self);
     }
 
     private void OnTriggerEnter(Collider other)

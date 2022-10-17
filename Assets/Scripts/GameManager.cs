@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -35,9 +33,7 @@ public class GameManager : MonoBehaviour
     public void OnAlienKill(GameObject alien)
     {
         if(alien.CompareTag("Alien"))
-        {
             bonusManager.SpawnBonus(alien.gameObject.transform.position);
-        }
     }
 
     public void OnPlayerHit(GameObject player)
@@ -50,7 +46,7 @@ public class GameManager : MonoBehaviour
                 playerHealth.LoseLife();
                 if(!IsAlive())
                     marineDeathSFX.Play();
-                 else
+                else
                     marineHurtSFX.Play();
             }
         }

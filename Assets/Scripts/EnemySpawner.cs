@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -43,12 +41,6 @@ public class EnemySpawner : MonoBehaviour
         cooldown = Mathf.Max(0, cooldown - Time.deltaTime);
         if (cooldown == 0 && GetRemainingEnemies() <= ENEMY_GAME_CAP)
         {
-            // leftSpawners = new List<GameObject>();
-            // foreach (GameObject spawner in spawners)
-            // {
-            //     if (spawner.activeSelf)
-            //         leftSpawners.Add(spawner);
-            // }
             if(spawners.Count > 0)
             {
                 int randomIndex = Random.Range(0, spawners.Count);
@@ -59,7 +51,6 @@ public class EnemySpawner : MonoBehaviour
                 if(GetRemainingEnemies() == 0)
                 {
                     Debug.Log("WIN");
-                    //win
                 }
             }
         }
@@ -79,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
             if(!enemy.activeSelf)
             {
                 spawnedEnemies++;
-                enemy.transform.position = position; //spawners[Random.Range(0, spawners.Count)].transform.position;
+                enemy.transform.position = position;
                 enemy.SetActive(true);
                 break;
             }

@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -38,11 +35,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Bullet") || other.CompareTag("Splash"))
         {
-            Hit(1);
+            Hit(Bullet.BULLET_DAMAGE);
         }
         else if (other.CompareTag("Missile"))
         {
-            Hit(5);
+            Hit(Missile.MISSILE_DAMAGE);
         }
     }
 
@@ -66,9 +63,9 @@ public class EnemyHealth : MonoBehaviour
     {
         explosion.gameObject.SetActive(true);
         explosion.Play();
-        this.capsuleCollider.enabled = false;
-        this.gameObject.transform.GetChild(0).gameObject.SetActive(false);
-        this.gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        capsuleCollider.enabled = false;
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
         deathSFX.Play();
         gameManager.OnAlienKill(this.gameObject);
         Invoke("HandleDeath", 1.5f);
@@ -77,6 +74,6 @@ public class EnemyHealth : MonoBehaviour
     private void HandleDeath()
     {
         explosion.gameObject.SetActive(false);
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
