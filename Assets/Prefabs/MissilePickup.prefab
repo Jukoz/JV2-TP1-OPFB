@@ -854,8 +854,9 @@ GameObject:
   - component: {fileID: 275107053}
   - component: {fileID: 275107055}
   - component: {fileID: 8129914967419486381}
+  - component: {fileID: 5631342896713210454}
   m_Layer: 0
-  m_Name: RobotRampage_Pickup_Ammo Variant
+  m_Name: MissilePickup
   m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d41400a58eedc40448a480bbca2da16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSFX: {fileID: 8129914967419486381}
 --- !u!114 &275107055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1024,6 +1024,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5631342896713210454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7171504067025027473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba1a8f78da570a18bda75db2b2b334a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 0
 --- !u!1 &7262976537300094628
 GameObject:
   m_ObjectHideFlags: 0

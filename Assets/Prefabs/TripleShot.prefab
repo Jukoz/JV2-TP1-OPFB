@@ -877,8 +877,9 @@ GameObject:
   - component: {fileID: 896632945}
   - component: {fileID: 7224549745511099042}
   - component: {fileID: 8209973710086372486}
+  - component: {fileID: 8593270590735236924}
   m_Layer: 0
-  m_Name: Pickup Variant
+  m_Name: TripleShot
   m_TagString: Bonus
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -937,7 +938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eac11ec301e611c1b69b0ed42319c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pickupSFX: {fileID: 8209973710086372486}
 --- !u!82 &8209973710086372486
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1034,6 +1034,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8593270590735236924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6857661954292522435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba1a8f78da570a18bda75db2b2b334a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifetime: 0
 --- !u!1 &6857661954292522441
 GameObject:
   m_ObjectHideFlags: 0
