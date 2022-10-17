@@ -32,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
 
             float speed = (transform.position - lastPosition).magnitude;
             lastPosition = transform.position;
-            animator.SetFloat("Speed", speed);
+            if(animator != null) animator.SetFloat("Speed", speed);
         }
     }
 
