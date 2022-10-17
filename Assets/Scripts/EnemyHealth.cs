@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private CapsuleCollider capsuleCollider;
     [SerializeField] private int maxHealth = 1;
     [SerializeField] private int currentLifePoints;
-    private GameManager gameManager;
+    [SerializeField] private GameManager gameManager;
 
     private void OnEnable()
     {

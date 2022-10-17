@@ -6,9 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private bool isAlive = false;
-    private Vector3 spawnPointOffset = new Vector3(0f, 3.5f, 0f);
-    private Renderer rendererMaterial;
-    private GameObject player;
+    private Renderer renderer;
 
     private void Awake()
     {
@@ -17,11 +15,8 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         isAlive = true;
-        rendererMaterial.enabled = true;
-        Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
-        transform.position = player.transform.position + newSpawnOffset;
+        renderer.enabled = true;
     }
 
     void Update()
