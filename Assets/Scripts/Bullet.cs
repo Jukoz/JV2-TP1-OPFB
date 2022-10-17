@@ -5,8 +5,9 @@ public class Bullet : MonoBehaviour
     public const int BULLET_DAMAGE = 1;
     [SerializeField] private float speed = 40;
     [SerializeField] private ParticleSystem explosion;
+    [SerializeField] private GameObject shooter;
     [SerializeField] private bool isAlive = false;
-    private Renderer renderer;
+    private Renderer rendererMaterial;
 
     private void Awake()
     {
@@ -16,7 +17,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         isAlive = true;
-        renderer.enabled = true;
+        rendererMaterial.enabled = true;
     }
 
     void Update()
@@ -24,9 +25,14 @@ public class Bullet : MonoBehaviour
         if(isAlive) transform.Translate(0, 0, speed, Space.Self);
     }
 
+    public void SetOwnerShooter(GameObject shooter)
+    {
+        this.shooter = shooter;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Bonus"))
+        if(other.gameObject != shooter && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Bonus"))
         {
             isAlive = false;
             rendererMaterial.enabled = false;

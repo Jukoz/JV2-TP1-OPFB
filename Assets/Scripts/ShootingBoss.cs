@@ -36,7 +36,9 @@ public class ShootingBoss : MonoBehaviour
                 if(shootingCooldown == 0)
                 {
                     shootingCooldown = SHOOTING_COOLDOWN_MAX;
-                    float xAngle = Mathf.Atan(new Vector2(difference.x, difference.z).magnitude / difference.y);
+                    Debug.Log("X: " + new Vector2(difference.x, difference.z).magnitude);
+                    Debug.Log("Y: " + difference.y);
+                    float xAngle = Mathf.Atan(new Vector2(difference.x, difference.z).magnitude / difference.y) * Mathf.PI;
                     bulletManager.SpawnBullet(this.gameObject, new Vector3(0, bossHeightOffset, 0), new Vector3(xAngle, 0, 0));
                 }
                 Debug.Log("halo");

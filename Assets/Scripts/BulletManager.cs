@@ -3,10 +3,6 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    private const float MAX_COOLDOWN = 0.15f;
-    private const int BULLET_CAP = 75;
-    private const float DURATION_TRIPLE_SHOT= 20;
-    private const float ANGLE_TRIPLE_SHOT = 30;
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject player;
     [SerializeField] private float tripleShotCooldown = 0;
@@ -76,6 +72,7 @@ public class BulletManager : MonoBehaviour
             {
                 bullet.transform.position = shooter.transform.position + offset;
                 bullet.transform.eulerAngles = shooter.transform.eulerAngles + angle;
+                bullet.GetComponent<Bullet>().SetOwnerShooter(shooter);
                 bullet.SetActive(true);
                 break;
             }
