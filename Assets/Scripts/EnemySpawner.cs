@@ -47,7 +47,6 @@ public class EnemySpawner : MonoBehaviour
                     leftSpawners.Add(spawner);
                 }
             }
-            Debug.Log(leftSpawners.Count);
             if(leftSpawners.Count > 0)
             {
                 int randomIndex = Random.Range(0, leftSpawners.Count);

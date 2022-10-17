@@ -9,19 +9,19 @@ public class Bullet : MonoBehaviour
     [SerializeField] private ParticleSystem explosion;
     [SerializeField] private bool isAlive = false;
     private Vector3 spawnPointOffset = new Vector3(0f, 3.5f, 0f);
-    private Renderer renderer;
+    private Renderer rendererMaterial;
     private GameObject player;
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
+        rendererMaterial = GetComponent<Renderer>();
     }
 
     private void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         isAlive = true;
-        renderer.enabled = true;
+        rendererMaterial.enabled = true;
         Vector3 newSpawnOffset = (player.transform.forward * 10f) + spawnPointOffset;
         transform.position = player.transform.position + newSpawnOffset;
     }
@@ -36,7 +36,7 @@ public class Bullet : MonoBehaviour
         if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Bonus"))
         {
             isAlive = false;
-            renderer.enabled = false;
+            rendererMaterial.enabled = false;
             explosion.gameObject.SetActive(true);
             explosion.Play();
             Invoke("DelayDisable", 1.5f);

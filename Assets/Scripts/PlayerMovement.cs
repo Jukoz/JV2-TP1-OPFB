@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
         {
             isGrounded = false;
         }
-        Debug.DrawRay(transform.position + raycastOffset, transform.TransformDirection(Vector3.down) * raycastLength, Color.gray);
         Jump();
     }
 
@@ -62,14 +61,9 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector3.down * gravityForce);
     }
 
-    public void Kill()
-    {
-        // Do some animation stuff;
-    }
-
     public bool IsAlive()
     {
-        return gameManager.IsAlive();
+        return gameObject.GetComponent<PlayerHealth>().IsAlive();
     }
 
     private void OnTriggerEnter(Collider other)
