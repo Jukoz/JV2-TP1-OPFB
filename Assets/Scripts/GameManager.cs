@@ -10,28 +10,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text tripleShotText;
     [SerializeField] private TMP_Text missileText;
-    [SerializeField] private const float INVICIBILITY_MAX = 3;
-    [SerializeField] private float invicibility;
-    [SerializeField] private int lives;
-    [SerializeField] private bool alive;
+    private EnemySpawner spawnerManager;
     private BonusManager bonusManager;
     private BulletManager bulletManager;
     private MissileManager missileManager;
+    private PlayerHealth playerHealth;
 
     void Start()
     {
-        lives = 5;
-        alive = true;
-        invicibility = 0;
+        playerHealth = GameObject.Find("SpaceMarine").GetComponent<PlayerHealth>();
         bonusManager = GameObject.Find("BonusManager").GetComponent<BonusManager>();
         bulletManager = GameObject.Find("BulletManager").GetComponent<BulletManager>();
         missileManager = GameObject.Find("MissileManager").GetComponent<MissileManager>();
+        spawnerManager = GameObject.Find("SpawnerManager").GetComponent<EnemySpawner>();
     }
 
     void Update()
     {
-        invicibility = Mathf.Min(INVICIBILITY_MAX, invicibility + Time.deltaTime);
-        livesText.text = lives.ToString();
+        livesText.text = playerHealth.GetLives().ToString();
         tripleShotText.text = bulletManager.GetTripleShotTime().ToString("0.0");
         missileText.text = missileManager.GetMissiles().ToString();
     }
@@ -40,7 +36,6 @@ public class GameManager : MonoBehaviour
     {
         if(alien.CompareTag("Alien"))
         {
-            EnemyMovement enemyMovement = alien.GetComponent<EnemyMovement>();
             bonusManager.SpawnBonus(alien.gameObject.transform.position);
         }
     }
@@ -49,28 +44,21 @@ public class GameManager : MonoBehaviour
     {
         if (player.CompareTag("Player"))
         {
-            if (lives == 0) return;
-            if(invicibility == INVICIBILITY_MAX)
+            if (!playerHealth.IsAlive()) return;
+            if(!playerHealth.IsInvincible())
             {
-                PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
-                lives--;
-                invicibility = 0;
-                if(lives == 0)
-                {
-                    playerMovement.Kill();
+                playerHealth.LoseLife();
+                if(!IsAlive())
                     marineDeathSFX.Play();
-                    alive = false;
-                } else
-                {
+                 else
                     marineHurtSFX.Play();
-                }
             }
         }
     }
 
     public void OnHealthBonusPickup()
     {
-        lives++;
+        playerHealth.AddLive();
     }
 
     public void OnMissilePickup()
@@ -85,6 +73,11 @@ public class GameManager : MonoBehaviour
 
     public bool IsAlive()
     {
-        return alive;
+        return playerHealth.IsAlive();
+    }
+
+    public void OnSpawnerKill(GameObject spawner)
+    {
+        spawnerManager.RemoveSpawner(spawner);
     }
 }

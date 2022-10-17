@@ -7,6 +7,7 @@ public class SpawnerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth = 5;
     [SerializeField] private int currentLifePoints;
+    private GameManager gameManager;
     void Start()
     {
         currentLifePoints = maxHealth;
@@ -36,9 +37,18 @@ public class SpawnerHealth : MonoBehaviour
         if((currentLifePoints -= damage) <= 0)
             Kill();
     }
+
+    public void SetGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
+    }
     
     private void Kill()
     {
+        if(this.gameObject == null)
+            Debug.Log("penis");
+        Debug.Log(this.gameObject);
+        gameManager.OnSpawnerKill(this.gameObject);
         this.gameObject.SetActive(false);
     }
 }
