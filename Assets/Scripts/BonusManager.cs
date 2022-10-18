@@ -8,7 +8,7 @@ public class BonusManager : MonoBehaviour
     [SerializeField] private GameObject missileBonusPrefab;
     [SerializeField] private GameObject tripleShotBonusPrefab;
     [SerializeField] private AudioSource spawnSFX;
-    [SerializeField] private int spawningChance = 80; 
+    [SerializeField] private int spawningChance = 25; 
     private List<GameObject> healingBonuses;
     private List<GameObject> missileBonuses;
     private List<GameObject> tripleShotBonuses;

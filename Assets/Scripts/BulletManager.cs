@@ -12,7 +12,7 @@ public class BulletManager : MonoBehaviour
     private Vector3 spawnPointOffset = new Vector3(0f, 3.5f, 0f);
     private const float MAX_COOLDOWN = 0.15f;
     private const int BULLET_CAP = 75;
-    private const float DURATION_TRIPLE_SHOT= 20;
+    private const float DURATION_TRIPLE_SHOT= 15;
     private const float ANGLE_TRIPLE_SHOT = 30;
     private GameManager gameManager;
     private List<GameObject> bullets;
