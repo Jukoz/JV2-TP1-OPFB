@@ -44,6 +44,11 @@ public class MissileManager : MonoBehaviour
     {
         missilesLeft += MISSILES_PER_PICKUP;
     }
+    
+    public int GetMissiles()
+    {
+        return missilesLeft;
+    }
 
     private void SpawnMissile()
     {
@@ -55,10 +60,5 @@ public class MissileManager : MonoBehaviour
                 break;
             }
         }
-    }
-
-    public int GetMissiles()
-    {
-        return missilesLeft;
     }
 }

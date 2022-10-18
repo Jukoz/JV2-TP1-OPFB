@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void Update()
+    void Update()
     {
         if (gameManager.IsGameOver()) return;
         hAxis = Input.GetAxisRaw("Horizontal");

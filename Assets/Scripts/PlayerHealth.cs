@@ -19,17 +19,6 @@ public class PlayerHealth : MonoBehaviour
         invicibility = Mathf.Max(0, invicibility -= Time.deltaTime);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {  
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            if (other.gameObject.GetComponent<Bullet>().GetOwnerShooter() != this.gameObject)
-            {
-                gameManager.OnPlayerHit(this.gameObject);
-            }
-        }
-    }
-
     public bool IsAlive()
     {
         return lives > 0;
@@ -57,6 +46,17 @@ public class PlayerHealth : MonoBehaviour
     public void AddLive()
     {
         lives++;
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {  
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            if (other.gameObject.GetComponent<Bullet>().GetOwnerShooter() != this.gameObject)
+            {
+                gameManager.OnPlayerHit(this.gameObject);
+            }
+        }
     }
 
     private void SetMaxInvincibility()

@@ -29,15 +29,9 @@ public class SpawnerHealth : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-
         if (other.CompareTag("Bullet"))
-        {
-            Hit(1); //manque const
-        }
+            Hit(Bullet.BULLET_DAMAGE);
         else if (other.CompareTag("Missile"))
-        {
-
-            Hit(5);
-        }
+            Hit(Missile.MISSILE_DAMAGE);
     }
 }
