@@ -30,6 +30,11 @@ public class Bullet : MonoBehaviour
         this.shooter = shooter;
     }
 
+    public GameObject GetOwnerShooter()
+    {
+        return this.shooter;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject != shooter && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("Bonus"))

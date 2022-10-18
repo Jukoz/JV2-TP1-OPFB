@@ -6,7 +6,7 @@ public class ShootingBoss : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private BulletManager bulletManager;
-    [SerializeField] private MissileManager missileManager;
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private float bossHeightOffset = 0;
     [SerializeField] private float playerHeightOffset = 20;
     [SerializeField] private float shootingCooldown;
@@ -17,16 +17,16 @@ public class ShootingBoss : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         shootingCooldown = SHOOTING_COOLDOWN_MAX;
         bulletManager = GameObject.Find("BulletManager").GetComponent<BulletManager>();
-        missileManager = GameObject.Find("MissileManager").GetComponent<MissileManager>();
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+        if (gameManager.IsGameOver()) return;
         shootingCooldown = Mathf.Max(0, shootingCooldown - Time.deltaTime);
         Vector3 gunPosition = transform.position + new Vector3(0, bossHeightOffset, 0);
         Vector3 playerPosition = player.transform.position + new Vector3(0, playerHeightOffset, 0);
-        Vector3 difference = new Vector3(Mathf.Abs(playerPosition.x - gunPosition.x),Mathf.Abs(playerPosition.y - gunPosition.y), Mathf.Abs(playerPosition.z - gunPosition.z));//playerPosition - gunPosition;
+        Vector3 difference = playerPosition - gunPosition;
         RaycastHit hit;
         Debug.DrawRay(gunPosition, difference, Color.red);
         if (Physics.Raycast(gunPosition, difference, out hit))
@@ -36,16 +36,11 @@ public class ShootingBoss : MonoBehaviour
                 if(shootingCooldown == 0)
                 {
                     shootingCooldown = SHOOTING_COOLDOWN_MAX;
-                    Debug.Log("X: " + new Vector2(difference.x, difference.z).magnitude);
-                    Debug.Log("Y: " + difference.y);
-                    float xAngle = Mathf.Atan(new Vector2(difference.x, difference.z).magnitude / -difference.y) * 3;
-                    bulletManager.SpawnBullet(this.gameObject, new Vector3(0, bossHeightOffset, 0), new Vector3(xAngle, 0, 0));
+                    float distance = Vector2.Distance(new Vector2(playerPosition.x, playerPosition.z), new Vector2(gunPosition.x, gunPosition.z));
+                    float xAngle = (Mathf.Atan2(distance, difference.y) * Mathf.Rad2Deg) - 90;
+                    bulletManager.SpawnBullet(this.gameObject, new Vector3(0, bossHeightOffset, 0), new Vector3(xAngle, 0,0));
                 }
-                Debug.Log("halo");
-            } else
-            {
-                Debug.Log("bye");
-            } 
+            }
         }
     }
 }

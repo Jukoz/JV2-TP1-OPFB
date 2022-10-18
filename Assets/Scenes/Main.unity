@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -16153,7 +16153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: db9abfb0ea0d54507b932d62b6d3af2b, type: 2}
+  - {fileID: 2100000, guid: dd1d697d128e746deb1cab02a543123b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16876,7 +16876,7 @@ MonoBehaviour:
   explosion: {fileID: 911846200}
   deathSFX: {fileID: 708888472}
   capsuleCollider: {fileID: 4365846595688258768}
-  maxHealth: 50
+  maxHealth: 100
   currentLifePoints: 0
   gameManager: {fileID: 475218135}
 --- !u!136 &4365846595688258768

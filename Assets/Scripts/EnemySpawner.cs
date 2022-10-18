@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     private const int ENEMY_CAP = 25;
     [SerializeField] private float cooldown;
     [SerializeField] private GameObject enemyPefab;
+    [SerializeField] private GameObject boss;
     [SerializeField] private int ENEMY_GAME_CAP = 20;
     [SerializeField] private int ENEMY_TOTAL_CAP = 100;
     [SerializeField] private int spawnedEnemies = 0;
@@ -50,7 +51,10 @@ public class EnemySpawner : MonoBehaviour
             {
                 if(GetRemainingEnemies() == 0)
                 {
-                    Debug.Log("WIN");
+                    if(!boss.activeSelf && !gameManager.IsGameOver())
+                    {
+                        boss.SetActive(true);
+                    }
                 }
             }
         }

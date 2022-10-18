@@ -23,11 +23,14 @@ public class EnemyHealth : MonoBehaviour
         if(collided.CompareTag("Player"))
         {
             if (!gameManager.IsAlive()) return;
-            if(collided.gameObject.transform.position.y < (this.transform.position.y + 1f))
+            if(gameObject.CompareTag("Alien"))
             {
-                gameManager.OnPlayerHit(collided);
+                if(collided.gameObject.transform.position.y < (this.transform.position.y + 1f))
+                {
+                    gameManager.OnPlayerHit(collided);
+                }
             }
-            Kill();
+            Hit(1);
         }
     }
 
@@ -35,10 +38,13 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Hit(Bullet.BULLET_DAMAGE);
+            if(other.gameObject.GetComponent<Bullet>().GetOwnerShooter() != this.gameObject)
+            {
+                Hit(Bullet.BULLET_DAMAGE);
+            }
         } else if (other.CompareTag("Splash"))
         {
-
+            Hit(Missile.SPLASH_DAMAGE);
         }
         else if (other.CompareTag("Missile"))
         {
@@ -71,6 +77,7 @@ public class EnemyHealth : MonoBehaviour
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
         deathSFX.Play();
         gameManager.OnAlienKill(this.gameObject);
+        if (this.gameObject.CompareTag("Boss")) gameManager.Victory();
         Invoke("HandleDeath", 1.5f);
     }
 

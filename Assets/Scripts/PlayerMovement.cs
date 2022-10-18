@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!IsAlive()) return;
+        if (gameManager.IsGameOver()) return;
         hAxis = Input.GetAxisRaw("Horizontal");
         vAxis = Input.GetAxisRaw("Vertical");
         RaycastHit hit;
@@ -39,15 +39,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!IsAlive()) return;
+        if (gameManager.IsGameOver()) return;
         Vector3 direction = Vector3.Normalize(new Vector3(hAxis, 0, vAxis));
         Vector3 newVelocity = rb.transform.TransformDirection(direction) * speed * Time.fixedDeltaTime;
         rb.velocity = new Vector3(newVelocity.x, rb.velocity.y, newVelocity.z);
     }
-    
-    public bool IsAlive()
+
+    public bool IsGameOver()
     {
-        return gameObject.GetComponent<PlayerHealth>().IsAlive();
+        return gameManager.IsGameOver();
     }
 
     private void Jump()
